@@ -1,6 +1,6 @@
-import NextButton from "@/components/NextButton";
-import OnboardingSlide from "@/components/OnboardingSlide";
-import PaginationinIndicator from "@/components/PaginationIndicator";
+import NextButton from "@/src/components/NextButton";
+import OnboardingSlide from "@/src/components/OnboardingSlide";
+import PaginationinIndicator from "@/src/components/PaginationIndicator";
 import { ONBOARDING_SLIDES, TSlide } from "@/src/utils/slides";
 import { StatusBar } from "expo-status-bar";
 import { useRef, useState } from "react";
