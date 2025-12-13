@@ -51,7 +51,7 @@ export const useAuthStore = create(
         set((state) => {
           return {
             ...state,
-            onboardingCompleted: false,
+            hasCompletedOnboarding: false,
           };
         }),
 
@@ -66,12 +66,6 @@ export const useAuthStore = create(
     }),
     {
       name: "auth-storage",
-      // storage: createJSONStorage(() => ({
-      //   setItem,
-      //   getItem,
-      //   removeItem: deleteItemAsync,
-      // })),
-
       storage: isWeb
         ? createJSONStorage(() => localStorage)
         : createJSONStorage(() => ({

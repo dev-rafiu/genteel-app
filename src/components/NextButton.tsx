@@ -1,4 +1,5 @@
 import { useAuthStore } from "@/src/utils/authStore";
+import { useRouter } from "expo-router";
 import { Pressable, Text } from "react-native";
 
 type Props = {
@@ -7,11 +8,13 @@ type Props = {
 };
 
 function NextButton({ scrollTo, isLastScreen }: Props) {
+  const router = useRouter();
   const { completeOnboarding } = useAuthStore();
 
   const handlePress = () => {
     if (isLastScreen) {
       completeOnboarding();
+      router.replace("/auth");
     } else {
       scrollTo();
     }
@@ -19,6 +22,7 @@ function NextButton({ scrollTo, isLastScreen }: Props) {
 
   return (
     <Pressable
+      // onPress={handlePress}
       onPress={handlePress}
       className="w-full h-[50px] rounded-md bg-primary items-center justify-center"
     >
