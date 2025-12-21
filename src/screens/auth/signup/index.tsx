@@ -1,115 +1,94 @@
-import { Link } from "expo-router";
-import {
-  Text,
-  View,
-  Image,
-  Dimensions,
-  Pressable,
-  TextInput,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View } from "react-native";
 
-import { FontFamily } from "@/src/constants/Typography";
+import { useState } from "react";
 
-const { width: screenWidth, height: screenHeight } = Dimensions.get("screen");
+import ExcitementReasons from "./ExcitementReasons";
+import ShowOffWhenWearing from "./ShowOffWhenWearing";
+import Credentials from "./Credentials";
+import Submitting from "./Submitting";
+
+type SignupStep =
+  | "credentials"
+  | "excitementReasons"
+  | "showOffWhenWearing"
+  | "submitting";
+
+export type PersonalizationData = {
+  excitementReasons: string[];
+  showOffWhenWearing: string[];
+};
 
 function SignupScreen() {
+  const [step, setStep] = useState<SignupStep>("credentials");
+  const [email, setEmail] = useState("a@a.com");
+  const [password, setPassword] = useState("0000");
+  const [personalization, setPersonalization] = useState<PersonalizationData>({
+    excitementReasons: [],
+    showOffWhenWearing: [],
+  });
+
+  const handleContinue = () => {
+    if (email && password && step === "credentials") {
+      setStep("excitementReasons");
+    }
+
+    if (
+      step === "excitementReasons" &&
+      personalization.excitementReasons.length > 0
+    ) {
+      setStep("showOffWhenWearing");
+    }
+
+    if (
+      step === "showOffWhenWearing" &&
+      personalization.showOffWhenWearing.length > 0
+    ) {
+      setStep("submitting");
+    }
+  };
+
+  const toggleSelection = (
+    category: keyof PersonalizationData,
+    value: string
+  ) => {
+    setPersonalization((prev) => {
+      const current = prev[category];
+      const updated = current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value];
+      return { ...prev, [category]: updated };
+    });
+  };
+
   return (
-    <View className="flex-1 relative">
-      {/* screen bg image  */}
-      <Image
-        source={require("@/assets/images/auth/signup-bg.jpg")}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: screenWidth,
-          height: screenHeight,
-        }}
-        resizeMode="cover"
-      />
+    <View className="relative flex-1">
+      {step === "credentials" && (
+        <Credentials
+          onContinue={handleContinue}
+          onEmailChange={setEmail}
+          onPasswordChange={setPassword}
+          email={email}
+          password={password}
+        />
+      )}
 
-      {/* dark overlay */}
-      <View
-        className="absolute inset-0 bg-black/70"
-        style={{
-          width: screenWidth,
-          height: screenHeight,
-        }}
-      />
+      {step === "excitementReasons" && (
+        <ExcitementReasons
+          onContinue={handleContinue}
+          toggleSelection={toggleSelection}
+          personalization={personalization}
+        />
+      )}
 
-      <SafeAreaView className="flex-1">
-        <View className="items-center justify-between px-5 flex-1 pb-10">
-          <View className="flex-col gap-[50px] w-full pt-48 text-center">
-            {/* page header */}
-            <View className="flex-col gap-2.5">
-              <Text
-                style={{ fontFamily: FontFamily.loraMedium }}
-                className="text-white text-[32px] font-medium text-center"
-              >
-                Welcome To Genteel
-              </Text>
-              <Text
-                style={{ fontFamily: FontFamily.nunitoMedium }}
-                className="text-[#EFEFF0] text-[16px] font-medium text-center"
-              >
-                We&apos;re glad you chose us to shop today
-              </Text>
-            </View>
+      {step === "showOffWhenWearing" && (
+        <ShowOffWhenWearing
+          toggleSelection={toggleSelection}
+          personalization={personalization}
+          onContinue={handleContinue}
+        />
+      )}
 
-            {/* input fields */}
-            <View className="w-full flex-col gap-[20px]">
-              <TextInput
-                placeholder="Enter Your Email"
-                placeholderTextColor="#B8BFBF"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                className="w-full text-white h-[60px]"
-                style={{
-                  color: "#fff",
-                  fontSize: 16,
-                  borderBottomWidth: 0.5,
-                  borderBottomColor: "#A4A8A8",
-                  fontFamily: FontFamily.nunitoMedium,
-                }}
-              />
-
-              <TextInput
-                placeholder="Enter Your Password"
-                placeholderTextColor="#B8BFBF"
-                secureTextEntry
-                autoCapitalize="none"
-                className="w-full text-white h-[60px]"
-                style={{
-                  color: "#fff",
-                  fontSize: 16,
-                  borderBottomWidth: 1,
-                  borderBottomColor: "#A4A8A8",
-                  fontFamily: FontFamily.nunitoMedium,
-                }}
-              />
-
-              <Pressable
-                onPress={() => {}}
-                className="w-full h-[50px] rounded-md bg-primary items-center justify-center mt-2"
-              >
-                <Text className="text-text-primary text-lg font-semibold">
-                  Continue
-                </Text>
-              </Pressable>
-            </View>
-          </View>
-
-          <Text className="text-white text-base">
-            Already have an account?{" "}
-            <Link href="/auth/signin">
-              <Text className="text-primary text-base font-medium">
-                Sign in
-              </Text>
-            </Link>
-          </Text>
-        </View>
-      </SafeAreaView>
+      {step === "submitting" && <Submitting />}
     </View>
   );
 }

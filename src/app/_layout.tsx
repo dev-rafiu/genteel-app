@@ -23,7 +23,6 @@ import {
   Nunito_700Bold,
   Nunito_800ExtraBold,
 } from "@expo-google-fonts/nunito";
-import CustomSplashScreen from "../screens/splash-screen";
 
 const isWeb = Platform.OS === "web";
 
@@ -36,7 +35,6 @@ export default function RootLayout() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_isReady, setIsReady] = useState(false);
 
-  // load fonts
   const [fontsLoaded] = useFonts({
     "Lora-Regular": Lora_400Regular,
     "Lora-Medium": Lora_500Medium,
@@ -55,6 +53,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (_hasHydrated && fontsLoaded) {
       SplashScreen.hideAsync();
+
       setTimeout(() => {
         setIsReady(true);
       }, 100);
@@ -62,15 +61,7 @@ export default function RootLayout() {
   }, [_hasHydrated, fontsLoaded]);
 
   if ((!_hasHydrated || !fontsLoaded) && !isWeb) {
-    // console.log("loading splash screen");
-
     return null;
-
-    // return (
-    //   <CustomSplashScreen
-    //     backgroundImage={require("../../assets/images/spashScreenBg.jpg")}
-    //   />
-    // );
   }
 
   return (
