@@ -2,10 +2,27 @@ import { Text, View, Image, Dimensions, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { FontFamily } from "@/src/constants/Typography";
+import { useAuthStore } from "@/src/utils/authStore";
+import { useCallback, useEffect } from "react";
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("screen");
 
 function Submitting() {
+  const { logIn } = useAuthStore();
+
+  const handleCompleteOnboarding = useCallback(async () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        logIn();
+        resolve(true);
+      }, 2000);
+    });
+  }, [logIn]);
+
+  useEffect(() => {
+    handleCompleteOnboarding();
+  }, [handleCompleteOnboarding]);
+
   return (
     <View className="flex-1 relative">
       {/* screen bg image  */}
