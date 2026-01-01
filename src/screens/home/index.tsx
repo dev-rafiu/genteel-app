@@ -11,6 +11,7 @@ import Collections from "./sections/Collections";
 import SearchBar from "./components/SearchBar";
 import NewInStock from "./sections/NewInStock";
 import { FontFamily } from "@/src/constants/Typography";
+import { StatusBar } from "expo-status-bar";
 
 function HomeScreen() {
   const [open, setOpen] = useState(false);
@@ -23,8 +24,10 @@ function HomeScreen() {
 
   return (
     <SafeAreaView className="bg-white flex-1">
-      <View className="gap-10 mt-10">
-        <View className="gap-[23px] px-5">
+      <StatusBar style="dark" />
+
+      <View className="gap-10">
+        <View className="gap-[23px] px-5 mt-8">
           <View className="flex-row items-center justify-between">
             <DropDownPicker
               open={open}
@@ -57,13 +60,8 @@ function HomeScreen() {
           <SearchBar />
         </View>
 
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            flexGrow: 1,
-          }}
-        >
-          <View className="gap-5 mb-20">
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View className="gap-6 mb-56">
             <Trending />
             <Recommended />
             <NewInStock />

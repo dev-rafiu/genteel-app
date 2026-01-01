@@ -1,18 +1,15 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { HapticTab } from "@/src/components/haptic-tab";
-// import { useColorScheme } from "@/src/hooks/use-color-scheme";
 import { HomeIcon, ShoppingCart, Catalog, Chat } from "@/src/components/Icons";
 import { Image } from "react-native";
 
 export default function TabLayout() {
-  // const colorScheme = useColorScheme();
   const userImageUrl = "https://i.pravatar.cc/150?img=47";
 
   return (
     <Tabs
       screenOptions={{
-        // tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         tabBarActiveTintColor: "#090A0A",
         headerShown: false,
         tabBarButton: HapticTab,
