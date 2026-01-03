@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 interface Props {
   item: {
-    id: number;
+    id: number | string;
     name: string;
     imgUrl: ImageSourcePropType;
     description: string;

@@ -30,8 +30,9 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="catalog"
+        name="(catalog)"
         options={{
+          href: "/(tabs)/(catalog)",
           tabBarIcon: ({ color }) => <Catalog color={color} />,
         }}
       />

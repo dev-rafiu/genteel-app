@@ -2,8 +2,8 @@ import { Text, View } from "react-native";
 
 function CartScreen() {
   return (
-    <View>
-      <Text>Cart</Text>
+    <View className="">
+      <Text className="">Cart</Text>
     </View>
   );
 }
