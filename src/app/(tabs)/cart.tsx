@@ -1,11 +1,7 @@
-import { Text, View } from "react-native";
+import CartScreen from "@/src/screens/cart";
 
-function CartScreen() {
-  return (
-    <View className="">
-      <Text className="">Cart</Text>
-    </View>
-  );
+function Cart() {
+  return <CartScreen />;
 }
 
-export default CartScreen;
+export default Cart;

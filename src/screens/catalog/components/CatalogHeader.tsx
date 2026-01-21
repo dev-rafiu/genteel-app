@@ -1,6 +1,6 @@
 import { FontFamily } from "@/src/constants/Typography";
 import { Feather, Ionicons } from "@expo/vector-icons";
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
 
 function CatalogHeader() {
   return (

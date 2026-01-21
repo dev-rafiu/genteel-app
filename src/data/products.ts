@@ -54,4 +54,35 @@ export const PRODUCTS = {
   collections: [
     { id: 1, imgUrl: require("@/assets/images/home/collections-img01.png") },
   ],
+
+  cart: [
+    {
+      id: 1,
+      name: "Shawl Rounded Collar Blazer",
+      imgUrl: require("@/assets/images/catalog/products/shawl-collar.png"),
+      price: 150,
+      color: "#9CAF88", // sage green
+      size: "M",
+      quantity: 1,
+    },
+    {
+      id: 2,
+      name: "Single-Breasted Clean Cut Blazer",
+      imgUrl: require("@/assets/images/catalog/products/single-breasted.png"),
+      price: 120,
+      originalPrice: 150,
+      color: "#A8D5E2", // light blue
+      size: "M",
+      quantity: 1,
+    },
+    {
+      id: 3,
+      name: "Cute Strip Pouch Handbag",
+      imgUrl: require("@/assets/images/home/stock-img01.png"), // Using Lux Band handbag image
+      price: 100,
+      color: "#D4C4A8", // light tan/beige
+      size: "L",
+      quantity: 1,
+    },
+  ],
 };

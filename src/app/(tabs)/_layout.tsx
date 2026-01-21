@@ -1,7 +1,7 @@
+import { HapticTab } from "@/src/components/haptic-tab";
+import { Catalog, Chat, HomeIcon, ShoppingCart } from "@/src/components/Icons";
 import { Tabs } from "expo-router";
 import React from "react";
-import { HapticTab } from "@/src/components/haptic-tab";
-import { HomeIcon, ShoppingCart, Catalog, Chat } from "@/src/components/Icons";
 import { Image } from "react-native";
 
 export default function TabLayout() {
