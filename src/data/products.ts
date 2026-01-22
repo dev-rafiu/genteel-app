@@ -85,4 +85,35 @@ export const PRODUCTS = {
       quantity: 1,
     },
   ],
+
+  favorites: [
+    {
+      id: 1,
+      name: "Gem Glow",
+      imgUrl: require("@/assets/images/home/recommend-img01.png"),
+      description: "High Waisted Shorts",
+      price: 100,
+    },
+    {
+      id: 2,
+      name: "Prada",
+      imgUrl: require("@/assets/images/home/stock-img01.png"),
+      description: "Elegance Mini handbag",
+      price: 240,
+    },
+    {
+      id: 3,
+      name: "Lux Luxury",
+      imgUrl: require("@/assets/images/home/featured-img01.png"),
+      description: "High Heels Shoes",
+      price: 180,
+    },
+    {
+      id: 4,
+      name: "Lamerei",
+      imgUrl: require("@/assets/images/home/featured-img02.png"),
+      description: "Reversible Angora Sweater",
+      price: 60,
+    },
+  ],
 };

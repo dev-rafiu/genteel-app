@@ -56,7 +56,9 @@ function HomeScreen() {
             />
 
             <View className="flex-row gap-5">
-              <Feather name="heart" size={24} color="black" />
+              <TouchableOpacity onPress={() => router.push("/(tabs)/favorites")}>
+                <Feather name="heart" size={24} color="black" />
+              </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => router.push("/(tabs)/notifications")}
                 className="relative"

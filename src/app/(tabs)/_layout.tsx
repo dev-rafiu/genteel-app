@@ -70,6 +70,13 @@ export default function TabLayout() {
           href: null,
         }}
       />
+
+      <Tabs.Screen
+        name="favorites"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
