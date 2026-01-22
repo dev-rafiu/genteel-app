@@ -44,7 +44,7 @@ function CartScreen() {
   return (
     <SafeAreaView className="flex-1 bg-white" edges={['top', 'left', 'right']}
     >
-      <View className="flex-1 gap-6">
+      <View className="flex-1 gap-6 mt-8">
         <View className="gap-5 px-5">
           <View className="flex-row items-center justify-between">
             <TouchableOpacity onPress={() => router.back()}>

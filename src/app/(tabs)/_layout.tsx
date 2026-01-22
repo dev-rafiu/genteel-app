@@ -1,5 +1,6 @@
+import { CartIconWithBadge } from "@/src/components/CartIconWithBadge";
 import { HapticTab } from "@/src/components/haptic-tab";
-import { Catalog, Chat, HomeIcon, ShoppingCart } from "@/src/components/Icons";
+import { Catalog, Chat, HomeIcon } from "@/src/components/Icons";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Image } from "react-native";
@@ -47,7 +48,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="cart"
         options={{
-          tabBarIcon: ({ color }) => <ShoppingCart color={color} />,
+          tabBarIcon: ({ color }) => <CartIconWithBadge color={color} />,
         }}
       />
 
@@ -60,6 +61,13 @@ export default function TabLayout() {
               className="w-7 h-7 rounded-full"
             />
           ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          href: null,
         }}
       />
     </Tabs>
