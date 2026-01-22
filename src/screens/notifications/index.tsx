@@ -7,7 +7,7 @@ import NotificationCard from "./components/NotificationCard";
 
 function NotificationsScreen() {
   return (
-    <SafeAreaView className="flex-1 bg-white" edges={['top', 'left', 'right']}>
+    <SafeAreaView className="flex-1 bg-white" edges={["top", "left", "right"]}>
       <View className="flex-1 gap-6">
         {/* header */}
         <View className="flex-row items-center justify-between px-5 mt-8 mb-6">

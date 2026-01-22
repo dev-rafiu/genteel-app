@@ -4,12 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { ChevronLeft } from "lucide-react-native";
 import { useState } from "react";
-import {
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CartItem, { CartItemModel } from "./components/CartItem";
 import CartSummary from "./components/CartSummary";
@@ -25,7 +20,7 @@ function CartScreen() {
           return { ...item, quantity: newQuantity };
         }
         return item;
-      })
+      }),
     );
   };
 
@@ -35,15 +30,14 @@ function CartScreen() {
 
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
 
   const discount = 10.99;
   const finalTotal = total - discount;
 
   return (
-    <SafeAreaView className="flex-1 bg-white" edges={['top', 'left', 'right']}
-    >
+    <SafeAreaView className="flex-1 bg-white" edges={["top", "left", "right"]}>
       <View className="flex-1 gap-6 mt-8">
         <View className="gap-5 px-5">
           <View className="flex-row items-center justify-between">
@@ -94,7 +88,7 @@ function CartScreen() {
           discount={discount}
           deliveryFeesText="Free"
           checkoutTotal={finalTotal}
-          onCheckout={() => { }}
+          onCheckout={() => {}}
         />
       </View>
     </SafeAreaView>
