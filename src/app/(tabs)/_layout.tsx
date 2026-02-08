@@ -39,7 +39,7 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="chat"
+        name="ai-search"
         options={{
           tabBarIcon: ({ color }) => <Chat color={color} />,
         }}
