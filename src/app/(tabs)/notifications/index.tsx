@@ -1,7 +1,7 @@
 import NotificationsScreen from "@/src/screens/notifications";
 
 function Notifications() {
-    return <NotificationsScreen />;
+  return <NotificationsScreen />;
 }
 
 export default Notifications;

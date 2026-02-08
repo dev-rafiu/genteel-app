@@ -20,7 +20,7 @@ function CartScreen() {
           return { ...item, quantity: newQuantity };
         }
         return item;
-      }),
+      })
     );
   };
 
@@ -30,7 +30,7 @@ function CartScreen() {
 
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0,
+    0
   );
 
   const discount = 10.99;
@@ -88,7 +88,6 @@ function CartScreen() {
           discount={discount}
           deliveryFeesText="Free"
           checkoutTotal={finalTotal}
-          onCheckout={() => {}}
         />
       </View>
     </SafeAreaView>

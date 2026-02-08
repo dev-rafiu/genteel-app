@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 import "../../global.css";
 
-import { Platform, View } from "react-native";
-import { useAuthStore } from "../utils/authStore";
-import { useEffect, useState } from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
+import { useEffect, useState } from "react";
+import { Platform, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { CheckoutProvider } from "../contexts/CheckoutContext";
+import { useAuthStore } from "../utils/authStore";
 
 import {
   Lora_400Regular,
@@ -32,7 +34,6 @@ if (!isWeb) {
 
 export default function RootLayout() {
   const { hasCompletedOnboarding, isloggedin, _hasHydrated } = useAuthStore();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_isReady, setIsReady] = useState(false);
 
   const [fontsLoaded] = useFonts({
@@ -66,23 +67,28 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <View className="flex-1">
-        <StatusBar style="auto" />
+      <CheckoutProvider>
+        <View className="flex-1">
+          <StatusBar style="auto" />
 
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Protected guard={isloggedin}>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          </Stack.Protected>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Protected guard={isloggedin}>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            </Stack.Protected>
 
-          <Stack.Protected guard={!isloggedin && !hasCompletedOnboarding}>
-            <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-          </Stack.Protected>
+            <Stack.Protected guard={!isloggedin && !hasCompletedOnboarding}>
+              <Stack.Screen
+                name="onboarding"
+                options={{ headerShown: false }}
+              />
+            </Stack.Protected>
 
-          <Stack.Protected guard={!isloggedin && hasCompletedOnboarding}>
-            <Stack.Screen name="auth" options={{ headerShown: false }} />
-          </Stack.Protected>
-        </Stack>
-      </View>
+            <Stack.Protected guard={!isloggedin && hasCompletedOnboarding}>
+              <Stack.Screen name="auth" options={{ headerShown: false }} />
+            </Stack.Protected>
+          </Stack>
+        </View>
+      </CheckoutProvider>
     </SafeAreaProvider>
   );
 }
