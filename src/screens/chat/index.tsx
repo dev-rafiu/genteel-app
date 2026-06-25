@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { ScrollView, View } from "react-native";
@@ -56,7 +57,7 @@ const POPULAR_BRANDS: SubsectionItem[] = [
 ];
 
 function ChatScreen() {
-  const [mode, setMode] = useState<ChatMode>("chat");
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -67,7 +68,11 @@ function ChatScreen() {
 
       <View className="flex-1 gap-6">
         <AISearchBar value={searchQuery} onChangeText={setSearchQuery} />
-        <ModeTabs mode={mode} tabs={TAB_CONFIG} onModeChange={setMode} />
+        <ModeTabs
+          mode="chat"
+          tabs={TAB_CONFIG}
+          onModeChange={(mode) => router.push(`/ai-search?mode=${mode}`)}
+        />
         <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
           <RecentSearches
             nearbyStores={NEARBY_FASHION_STORES}

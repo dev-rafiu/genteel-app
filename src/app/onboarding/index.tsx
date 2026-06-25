@@ -27,7 +27,7 @@ function OnboardingScreen() {
       if (viewableItems.length > 0) {
         setCurrentIndex(viewableItems[0].index ?? 0);
       }
-    }
+    },
   ).current;
 
   const viewConfig = useRef({
@@ -57,7 +57,7 @@ function OnboardingScreen() {
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           {
             useNativeDriver: false,
-          }
+          },
         )}
         onViewableItemsChanged={viewableItemsChanged}
         viewabilityConfig={viewConfig}

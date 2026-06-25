@@ -1,0 +1,17 @@
+import { FontFamily } from "@/src/constants/Typography";
+import { Text, View } from "react-native";
+
+function VideoContent() {
+  return (
+    <View className="flex-1 bg-white px-5 py-8">
+      <Text
+        style={{ fontFamily: FontFamily.nunitoRegular, fontSize: 16 }}
+        className="text-[#626565]"
+      >
+        Video search — coming soon.
+      </Text>
+    </View>
+  );
+}
+
+export default VideoContent;

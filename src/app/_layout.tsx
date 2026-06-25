@@ -61,9 +61,7 @@ export default function RootLayout() {
     }
   }, [_hasHydrated, fontsLoaded]);
 
-  if ((!_hasHydrated || !fontsLoaded) && !isWeb) {
-    return null;
-  }
+  if ((!_hasHydrated || !fontsLoaded) && !isWeb) return null;
 
   return (
     <SafeAreaProvider>
